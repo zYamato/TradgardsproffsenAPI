@@ -11,7 +11,7 @@ namespace TradgardsproffsenAPI.Models
         public string PhoneNumber { get; set; }
         public string PostNr { get; set; }
         public string Info { get; set; }
-        public List<LeadJob> Jobbs { get; set; } = new List<LeadJob>();
+        public List<LeadJob> Jobs { get; set; } = new List<LeadJob>();
         public List<Company> ForetagListaSkickade { get; set; } = new List<Company>();
     }
 }
