@@ -1,22 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
-using TradgardsproffsenAPI.Entities;
+using TradgardsproffsenApp.Entities;
 
-namespace TradgardsproffsenAPI.Models
+namespace TradgardsproffsenApp.Models
 {
     public class UpdateCompanyDto
     {
-        public string Namn { get; set; }
-        public string Mail { get; set; }
-        public string TelefonNummer { get; set; }
-        public double Omsattningsmal { get; set; }
-        public int Fakturerat { get; set; }
-        public double Kvar { get; set; }
-        public DateTimeOffset? SenasteLead { get; set; }
-        public string Lan { get; set; }
-        public int Utförda { get; set; }
-        public double Hitrate { get; set; }
+        public string Name { get; set; }
+        public string Email { get; set; }
+        public string PhoneNumber { get; set; }
+        public double SalesTarget { get; set; }
+        public int Invoiced { get; set; }
+        public double Left { get; set; }
+        public DateTimeOffset? LatestLead { get; set; }
+        public string County { get; set; }
+        public int Accomplished { get; set; }
+        public double HitRate { get; set; }
         public List<ValidatedLead> Leads { get; set; }
-        public List<CompanyJob> TillgangligaJobb { get; set; } = new List<CompanyJob>();
+        public List<CompanyJob> AvailableJobs { get; set; }
     }
 }

@@ -1,31 +1,42 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using TradgardsproffsenAPI.Entities;
+using TradgardsproffsenApp.Entities;
 
-namespace TradgardsproffsenAPI.Models
+namespace TradgardsproffsenApp.Models
 {
     public class CreateCompanyDto
     {
         [Required]
-        public string Namn { get; set; }
-        [Required]
-        public string Mail { get; set; }
-        [Required]
-        public string TelefonNummer { get; set; }
-        [Required]
-        public double Omsattningsmal { get; set; }
-        public int Fakturerat { get; set; } = 0;
-        [Required]
-        public double Kvar { get; set; }
-        [Required]
-        public string Lan { get; set; }
-        public DateTimeOffset? SenasteLead { get; set; } = null;
-        public int Utförda { get; set; } = 0;
-        public double Hitrate { get; set; } = 0;
+        public string Name { get; set; }
 
         [Required]
-        public List<CompanyJob> TillgangligaJobb { get; set; } = new List<CompanyJob>();
+        public string Email { get; set; }
+
+        [Required]
+        public string PhoneNumber { get; set; }
+
+        [Required]
+        public double SalesTarget { get; set; }
+
+        [Required]
+        public int Invoiced { get; set; }
+
+        [Required]
+        public double Left { get; set; }
+
+        public DateTimeOffset? LatestLead { get; set; }
+
+        [Required]
+        public string County { get; set; }
+
+        public int Accomplished { get; set; }
+
+        public double HitRate { get; set; }
+
+        public List<ValidatedLead> Leads { get; set; }
+
+        public List<CompanyJob> AvailableJobs { get; set; }
 
     }
 }

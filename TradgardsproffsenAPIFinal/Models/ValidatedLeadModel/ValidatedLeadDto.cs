@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using TradgardsproffsenAPI.Models;
+using TradgardsproffsenApp.Models;
 
-namespace TradgardsproffsenAPI.Models
+namespace TradgardsproffsenApp.Models
 {
     public class ValidatedLeadDto
     {

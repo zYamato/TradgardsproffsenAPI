@@ -1,4 +1,4 @@
-﻿namespace TradgardsproffsenAPI.Models
+﻿namespace TradgardsproffsenApp.Models
 {
     public class JobDto
     {

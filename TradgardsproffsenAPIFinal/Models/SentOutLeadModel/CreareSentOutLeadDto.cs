@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
-using TradgardsproffsenAPI.Entities;
+using TradgardsproffsenApp.Entities;
 
-namespace TradgardsproffsenAPI.Models
+namespace TradgardsproffsenApp.Models
 {
-    public class CreateSentOutLeadDto
+    public class CreareSentOutLeadDto
     {
         public ValidatedLead Lead { get; set; }
         public List<LeadJob> Jobbs { get; set; } = new List<LeadJob>();

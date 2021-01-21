@@ -93,32 +93,6 @@ namespace TradgardsproffsenAPI.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "LeadJobb",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    LeadId = table.Column<int>(type: "int", nullable: false),
-                    JobId = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_LeadJobb", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_LeadJobb_Job_JobId",
-                        column: x => x.JobId,
-                        principalTable: "Job",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_LeadJobb_Lead_LeadId",
-                        column: x => x.LeadId,
-                        principalTable: "Lead",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Company",
                 columns: table => new
                 {
@@ -208,26 +182,39 @@ namespace TradgardsproffsenAPI.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "JobDto",
+                name: "LeadJobb",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    LeadId = table.Column<int>(type: "int", nullable: false),
+                    JobId = table.Column<int>(type: "int", nullable: false),
                     SentOutLeadId = table.Column<int>(type: "int", nullable: true),
                     ValidatedLeadId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_JobDto", x => x.Id);
+                    table.PrimaryKey("PK_LeadJobb", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_JobDto_SentOutLead_SentOutLeadId",
+                        name: "FK_LeadJobb_Job_JobId",
+                        column: x => x.JobId,
+                        principalTable: "Job",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_LeadJobb_Lead_LeadId",
+                        column: x => x.LeadId,
+                        principalTable: "Lead",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_LeadJobb_SentOutLead_SentOutLeadId",
                         column: x => x.SentOutLeadId,
                         principalTable: "SentOutLead",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_JobDto_ValidatedLead_ValidatedLeadId",
+                        name: "FK_LeadJobb_ValidatedLead_ValidatedLeadId",
                         column: x => x.ValidatedLeadId,
                         principalTable: "ValidatedLead",
                         principalColumn: "Id",
@@ -255,16 +242,6 @@ namespace TradgardsproffsenAPI.Migrations
                 column: "JobId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_JobDto_SentOutLeadId",
-                table: "JobDto",
-                column: "SentOutLeadId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_JobDto_ValidatedLeadId",
-                table: "JobDto",
-                column: "ValidatedLeadId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_LeadJobb_JobId",
                 table: "LeadJobb",
                 column: "JobId");
@@ -273,6 +250,16 @@ namespace TradgardsproffsenAPI.Migrations
                 name: "IX_LeadJobb_LeadId",
                 table: "LeadJobb",
                 column: "LeadId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_LeadJobb_SentOutLeadId",
+                table: "LeadJobb",
+                column: "SentOutLeadId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_LeadJobb_ValidatedLeadId",
+                table: "LeadJobb",
+                column: "ValidatedLeadId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ValidatedLead_CompanyId",
@@ -286,22 +273,19 @@ namespace TradgardsproffsenAPI.Migrations
                 name: "CompanyJob");
 
             migrationBuilder.DropTable(
-                name: "JobDto");
-
-            migrationBuilder.DropTable(
                 name: "LeadJobb");
 
             migrationBuilder.DropTable(
                 name: "LostLead");
 
             migrationBuilder.DropTable(
-                name: "ValidatedLead");
-
-            migrationBuilder.DropTable(
                 name: "Job");
 
             migrationBuilder.DropTable(
                 name: "Lead");
+
+            migrationBuilder.DropTable(
+                name: "ValidatedLead");
 
             migrationBuilder.DropTable(
                 name: "Company");

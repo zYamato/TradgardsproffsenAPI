@@ -1,6 +1,6 @@
-﻿using TradgardsproffsenAPI.Entities;
+﻿using TradgardsproffsenApp.Entities;
 
-namespace TradgardsproffsenAPI.Models
+namespace TradgardsproffsenApp.Models
 {
     public class LostLeadDto
     {
