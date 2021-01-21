@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Components;
 
-namespace TradgardsproffsenApp.Models
+namespace TradgardsproffsenAPI.Models
 {
     public class LeadDto
     {

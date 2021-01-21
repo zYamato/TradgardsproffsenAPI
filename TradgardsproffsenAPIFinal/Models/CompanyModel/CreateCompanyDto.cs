@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using TradgardsproffsenApp.Entities;
+using TradgardsproffsenAPI.Entities;
 
-namespace TradgardsproffsenApp.Models
+namespace TradgardsproffsenAPI.Models
 {
     public class CreateCompanyDto
     {
