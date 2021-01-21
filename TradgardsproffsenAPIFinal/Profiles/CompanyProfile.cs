@@ -4,9 +4,9 @@ using TradgardsproffsenAPI.Models;
 
 namespace TradgardsproffsenAPI.Profiles
 {
-    public class ForetagProfile : Profile
+    public class CompanyProfile : Profile
     {
-        public ForetagProfile()
+        public CompanyProfile()
         {
             CreateMap<Company, CompanyDto>();
             CreateMap<CreateCompanyDto, Company>();

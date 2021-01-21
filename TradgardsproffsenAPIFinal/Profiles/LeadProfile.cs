@@ -4,11 +4,11 @@ using TradgardsproffsenAPI.Models;
 
 namespace TradgardsproffsenAPI.Profiles
 {
-    public class AllaLeadsProfile : Profile
+    public class LeadProfile : Profile
     {
-        public AllaLeadsProfile()
+        public LeadProfile()
         {
-            CreateMap<AllLead, AllLeadDto>();
+            CreateMap<Lead, LeadDto>();
         }
     }
 }

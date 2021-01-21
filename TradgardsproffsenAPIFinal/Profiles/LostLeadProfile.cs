@@ -4,11 +4,11 @@ using TradgardsproffsenAPI.Models;
 
 namespace TradgardsproffsenAPI.Profiles
 {
-    public class JobbProfile : Profile
+    public class LostLeadProfile : Profile
     {
-        public JobbProfile()
+        public LostLeadProfile()
         {
-            CreateMap<Job, JobDto>();
+            CreateMap<LostLead, LostLeadDto>();
         }
     }
 }

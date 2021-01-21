@@ -3,11 +3,10 @@ using TradgardsproffsenAPI.Entities;
 
 namespace TradgardsproffsenAPI.Models
 {
-    public class AllLeadModel
+    public class CreateSentOutLeadDto
     {
-        public Lead Lead { get; set; }
-        public ValidatedLead ValidLead { get; set; }
-        public LostLead LostLead { get; set; }
+        public ValidatedLead Lead { get; set; }
+        public List<LeadJob> Jobbs { get; set; } = new List<LeadJob>();
         public List<Company> ForetagListaSkickade { get; set; } = new List<Company>();
     }
 }

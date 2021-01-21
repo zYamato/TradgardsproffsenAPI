@@ -4,9 +4,9 @@ using TradgardsproffsenAPI.Models;
 
 namespace TradgardsproffsenAPI.Profiles
 {
-    public class UtskickadeLeadsProfile : Profile
+    public class SentOutLeadProfile : Profile
     {
-        public UtskickadeLeadsProfile()
+        public SentOutLeadProfile()
         {
             CreateMap<SentOutLead, SentOutLeadDto>();
             CreateMap<CreateSentOutLeadDto, SentOutLead>();
