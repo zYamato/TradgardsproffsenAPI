@@ -45,7 +45,7 @@ namespace TradgardsproffsenAPI.Controllers
         public ActionResult<ValidatedLeadDto> ValideraLead(CreateValidatedLeadDto lead)
         {
             var leadModel = _mapper.Map<ValidatedLead>(lead);
-            inal_leadsRepo.ValidateLead(leadModel);
+            _leadsRepo.ValidateLead(leadModel);
             _leadsRepo.Save();
 
 
