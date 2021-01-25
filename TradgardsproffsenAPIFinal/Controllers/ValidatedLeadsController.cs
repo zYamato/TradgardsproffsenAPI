@@ -7,7 +7,7 @@ using TradgardsproffsenAPI.Services;
 
 namespace TradgardsproffsenAPI.Controllers
 {
-    [Route("api/ValidatedLeads")]
+    [Route("api/Validatedleads")]
     public class ValidatedLeadsController : ControllerBase
     {
         private readonly ILeadsRepo _leadsRepo;
