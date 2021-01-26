@@ -3,26 +3,43 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace TradgardsproffsenAPI.Migrations
 {
-    public partial class INITMIGRATION : Migration
+    public partial class InitMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "AllLead",
+                name: "Company",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Address = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    District = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    PostCode = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Email = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    SalesTarget = table.Column<double>(type: "float", nullable: false),
+                    Invoiced = table.Column<int>(type: "int", nullable: false),
+                    Left = table.Column<double>(type: "float", nullable: false),
+                    LatestLead = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
+                    County = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Accomplished = table.Column<int>(type: "int", nullable: false),
+                    HitRate = table.Column<double>(type: "float", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_AllLead", x => x.Id);
+                    table.PrimaryKey("PK_Company", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Job",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Job", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -102,52 +119,29 @@ namespace TradgardsproffsenAPI.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Company",
+                name: "CompanyJob",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    SalesTarget = table.Column<double>(type: "float", nullable: false),
-                    Invoiced = table.Column<int>(type: "int", nullable: false),
-                    Left = table.Column<double>(type: "float", nullable: false),
-                    LatestLead = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
-                    County = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Accomplished = table.Column<int>(type: "int", nullable: false),
-                    HitRate = table.Column<double>(type: "float", nullable: false),
-                    AllLeadId = table.Column<int>(type: "int", nullable: true)
+                    CompanyId = table.Column<int>(type: "int", nullable: false),
+                    JobId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Company", x => x.Id);
+                    table.PrimaryKey("PK_CompanyJob", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Company_AllLead_AllLeadId",
-                        column: x => x.AllLeadId,
-                        principalTable: "AllLead",
+                        name: "FK_CompanyJob_Company_CompanyId",
+                        column: x => x.CompanyId,
+                        principalTable: "Company",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Job",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    SentOutLeadId = table.Column<int>(type: "int", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Job", x => x.Id);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Job_SentOutLead_SentOutLeadId",
-                        column: x => x.SentOutLeadId,
-                        principalTable: "SentOutLead",
+                        name: "FK_CompanyJob_Job_JobId",
+                        column: x => x.JobId,
+                        principalTable: "Job",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -175,38 +169,13 @@ namespace TradgardsproffsenAPI.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "CompanyJob",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    CompanyId = table.Column<int>(type: "int", nullable: false),
-                    JobId = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_CompanyJob", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_CompanyJob_Company_CompanyId",
-                        column: x => x.CompanyId,
-                        principalTable: "Company",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_CompanyJob_Job_JobId",
-                        column: x => x.JobId,
-                        principalTable: "Job",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "LeadJobb",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ValidatedLeadId = table.Column<int>(type: "int", nullable: false),
+                    SentOutLeadId = table.Column<int>(type: "int", nullable: true),
                     JobId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -219,17 +188,18 @@ namespace TradgardsproffsenAPI.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
+                        name: "FK_LeadJobb_SentOutLead_SentOutLeadId",
+                        column: x => x.SentOutLeadId,
+                        principalTable: "SentOutLead",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
                         name: "FK_LeadJobb_ValidatedLead_ValidatedLeadId",
                         column: x => x.ValidatedLeadId,
                         principalTable: "ValidatedLead",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Company_AllLeadId",
-                table: "Company",
-                column: "AllLeadId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_CompanyJob_CompanyId",
@@ -247,14 +217,14 @@ namespace TradgardsproffsenAPI.Migrations
                 column: "LeadsId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Job_SentOutLeadId",
-                table: "Job",
-                column: "SentOutLeadId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_LeadJobb_JobId",
                 table: "LeadJobb",
                 column: "JobId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_LeadJobb_SentOutLeadId",
+                table: "LeadJobb",
+                column: "SentOutLeadId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_LeadJobb_ValidatedLeadId",
@@ -286,13 +256,10 @@ namespace TradgardsproffsenAPI.Migrations
                 name: "Job");
 
             migrationBuilder.DropTable(
-                name: "ValidatedLead");
-
-            migrationBuilder.DropTable(
-                name: "AllLead");
-
-            migrationBuilder.DropTable(
                 name: "SentOutLead");
+
+            migrationBuilder.DropTable(
+                name: "ValidatedLead");
         }
     }
 }

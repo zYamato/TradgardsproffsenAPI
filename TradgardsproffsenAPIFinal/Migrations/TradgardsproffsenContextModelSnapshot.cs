@@ -34,36 +34,6 @@ namespace TradgardsproffsenAPI.Migrations
                     b.ToTable("CompanySentOutLead");
                 });
 
-            modelBuilder.Entity("TradgardsproffsenAPI.Entities.AllLead", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .UseIdentityColumn();
-
-                    b.Property<string>("Address")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("District")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Email")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PhoneNumber")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PostCode")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("AllLead");
-                });
-
             modelBuilder.Entity("TradgardsproffsenAPI.Entities.Company", b =>
                 {
                     b.Property<int>("Id")
@@ -72,9 +42,6 @@ namespace TradgardsproffsenAPI.Migrations
                         .UseIdentityColumn();
 
                     b.Property<int>("Accomplished")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("AllLeadId")
                         .HasColumnType("int");
 
                     b.Property<string>("County")
@@ -109,8 +76,6 @@ namespace TradgardsproffsenAPI.Migrations
                         .HasColumnType("float");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("AllLeadId");
 
                     b.ToTable("Company");
                 });
@@ -147,12 +112,7 @@ namespace TradgardsproffsenAPI.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("SentOutLeadId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("SentOutLeadId");
 
                     b.ToTable("Job");
                 });
@@ -198,12 +158,17 @@ namespace TradgardsproffsenAPI.Migrations
                     b.Property<int>("JobId")
                         .HasColumnType("int");
 
+                    b.Property<int?>("SentOutLeadId")
+                        .HasColumnType("int");
+
                     b.Property<int>("ValidatedLeadId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
                     b.HasIndex("JobId");
+
+                    b.HasIndex("SentOutLeadId");
 
                     b.HasIndex("ValidatedLeadId");
 
@@ -341,13 +306,6 @@ namespace TradgardsproffsenAPI.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("TradgardsproffsenAPI.Entities.Company", b =>
-                {
-                    b.HasOne("TradgardsproffsenAPI.Entities.AllLead", null)
-                        .WithMany("CompaniesSentTo")
-                        .HasForeignKey("AllLeadId");
-                });
-
             modelBuilder.Entity("TradgardsproffsenAPI.Entities.CompanyJob", b =>
                 {
                     b.HasOne("TradgardsproffsenAPI.Entities.Company", "Company")
@@ -367,13 +325,6 @@ namespace TradgardsproffsenAPI.Migrations
                     b.Navigation("Job");
                 });
 
-            modelBuilder.Entity("TradgardsproffsenAPI.Entities.Job", b =>
-                {
-                    b.HasOne("TradgardsproffsenAPI.Entities.SentOutLead", null)
-                        .WithMany("Jobs")
-                        .HasForeignKey("SentOutLeadId");
-                });
-
             modelBuilder.Entity("TradgardsproffsenAPI.Entities.LeadJob", b =>
                 {
                     b.HasOne("TradgardsproffsenAPI.Entities.Job", "Job")
@@ -381,6 +332,10 @@ namespace TradgardsproffsenAPI.Migrations
                         .HasForeignKey("JobId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.HasOne("TradgardsproffsenAPI.Entities.SentOutLead", "SentOutLead")
+                        .WithMany("Jobs")
+                        .HasForeignKey("SentOutLeadId");
 
                     b.HasOne("TradgardsproffsenAPI.Entities.ValidatedLead", "ValidatedLead")
                         .WithMany("Jobs")
@@ -390,12 +345,9 @@ namespace TradgardsproffsenAPI.Migrations
 
                     b.Navigation("Job");
 
-                    b.Navigation("ValidatedLead");
-                });
+                    b.Navigation("SentOutLead");
 
-            modelBuilder.Entity("TradgardsproffsenAPI.Entities.AllLead", b =>
-                {
-                    b.Navigation("CompaniesSentTo");
+                    b.Navigation("ValidatedLead");
                 });
 
             modelBuilder.Entity("TradgardsproffsenAPI.Entities.Company", b =>

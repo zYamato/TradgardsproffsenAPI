@@ -46,11 +46,6 @@ namespace TradgardsproffsenAPI.Services
         void SendLead(ValidatedLead Lead, List<Company> foretag);
         #endregion
 
-        //Alla Leads
-        #region
-        IEnumerable<AllLead> GetAllLeads();
-        #endregion
-
         //Jobb
         #region
         IEnumerable<Job> GetAllJobs();

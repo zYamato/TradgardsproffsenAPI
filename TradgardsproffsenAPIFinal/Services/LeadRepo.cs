@@ -162,14 +162,6 @@ namespace TradgardsproffsenAPI.Services
 
 
         #endregion
-        //All Leads
-        #region
-        public IEnumerable<AllLead> GetAllLeads()
-        {
-            return _context.AllLead.ToList()
-                .OrderByDescending(o => o.Name);
-        }
-        #endregion
         //Jobs
         #region
         public IEnumerable<Job> GetAllJobs()
