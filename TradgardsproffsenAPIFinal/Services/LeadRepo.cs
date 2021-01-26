@@ -143,7 +143,7 @@ namespace TradgardsproffsenAPI.Services
         {
             SentOutLead sentOutLead = new SentOutLead
             {
-                Jobs = lead.Jobs,
+                //Jobs = lead.Jobs,
                 CompaniesSentTo = Companies
             };
             _context.ValidatedLead.Remove(lead);

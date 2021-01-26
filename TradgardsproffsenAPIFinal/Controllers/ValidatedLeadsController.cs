@@ -42,7 +42,7 @@ namespace TradgardsproffsenAPI.Controllers
         }
 
         [HttpPost]
-        public ActionResult<ValidatedLeadDto> ValideraLead(CreateValidatedLeadDto lead)
+        public ActionResult<ValidatedLeadDto> ValideraLead([FromBody]CreateValidatedLeadDto lead)
         {
             var leadModel = _mapper.Map<ValidatedLead>(lead);
             _leadsRepo.ValidateLead(leadModel);

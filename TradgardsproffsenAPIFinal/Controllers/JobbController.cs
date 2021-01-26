@@ -20,10 +20,10 @@ namespace TradgardsproffsenAPI.Controllers
          }
 
         [HttpGet]
-         public ActionResult<IEnumerable<JobDto>> GetAllForetag()
+         public ActionResult<IEnumerable<Jobs>> GetAllForetag()
          {
              var jobbFromRepo = _leadsRepo.GetAllJobs();
-             return Ok(_mapper.Map<IEnumerable<JobDto>>(jobbFromRepo));
+             return Ok(_mapper.Map<IEnumerable<Jobs>>(jobbFromRepo));
          }
     }
 }

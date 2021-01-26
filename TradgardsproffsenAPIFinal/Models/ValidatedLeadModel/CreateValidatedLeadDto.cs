@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using TradgardsproffsenAPI.Entities;
 using TradgardsproffsenAPI.Models;
 
 namespace TradgardsproffsenAPI.Models
@@ -28,6 +30,7 @@ namespace TradgardsproffsenAPI.Models
 
         [Required]
         public string Info { get; set; }
-        public List<JobDto> Jobs { get; set; } = new List<JobDto>();
+
+        public List<LeadJob> Jobs { get; set; }
     }
 }

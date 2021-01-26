@@ -38,7 +38,7 @@ namespace TradgardsproffsenAPI.Entities
 
         public double HitRate { get; set; }
 
-        public List<ValidatedLead> Leads { get; set; }
+        public List<SentOutLead> Leads { get; set; }
 
         public List<CompanyJob> AvailableJobs { get; set; }
     }

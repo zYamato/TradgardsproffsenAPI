@@ -1,11 +1,12 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
+using TradgardsproffsenAPI.Entities;
 using TradgardsproffsenAPI.Models;
 
 namespace TradgardsproffsenAPI.Models
 {
     public class ValidatedLeadDto
     {
-        public string Id { get; set; }
         public string Name { get; set; }
         public string PhoneNumber { get; set; }
         public string Address { get; set; }
@@ -14,6 +15,6 @@ namespace TradgardsproffsenAPI.Models
         public string Email { get; set; }
         public string URL { get; set; }
         public string Info { get; set; }
-        public List<JobDto> Jobs { get; set; } = new List<JobDto>();
+        public List<LeadJob> Jobs { get; set; }
     }
 }

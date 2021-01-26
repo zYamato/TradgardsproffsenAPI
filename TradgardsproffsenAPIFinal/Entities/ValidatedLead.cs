@@ -32,6 +32,6 @@ namespace TradgardsproffsenAPI.Entities
         [Required]
         public string URL { get; set; }
         public string Info { get; set; }
-        public List<LeadJob> Jobs { get; set; } = new List<LeadJob>();
+        public List<LeadJob> Jobs { get; set; }
     }
 }

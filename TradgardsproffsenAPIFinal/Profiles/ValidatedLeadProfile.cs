@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using TradgardsproffsenAPI.Entities;
 using TradgardsproffsenAPI.Models;
+using TradgardsproffsenAPI.Profiles.MapperHelper;
 
 namespace TradgardsproffsenAPI.Profiles
 {
@@ -8,8 +9,9 @@ namespace TradgardsproffsenAPI.Profiles
     {
         public ValidatedLeadProfile()
         {
-            CreateMap<ValidatedLead, ValidatedLeadDto>();
             CreateMap<CreateValidatedLeadDto, ValidatedLead>();
+            CreateMap<ValidatedLead, ValidatedLeadDto>();
+
         }
     }
 }

@@ -8,7 +8,8 @@ namespace TradgardsproffsenAPI.Profiles
     {
         public JobProfile()
         {
-            CreateMap<Job, JobDto>();
+            CreateMap<Job, Jobs>();
+            CreateMap<Job, LeadJob>();
         }
     }
 }
