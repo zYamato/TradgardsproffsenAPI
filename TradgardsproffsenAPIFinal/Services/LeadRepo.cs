@@ -171,27 +171,35 @@ namespace TradgardsproffsenAPI.Services
         }
         #endregion
 
-   //    public IEnumerable<Foretag> MatchingLead(ValideradeLeads Lead)
-   //    {
-   //        List<Foretag> AcceptedForetag = new List<Foretag>(); 
-   //        foreach(var foretag in _context.Foretag)
-   //        {
-   //            for(int i = 0; i < foretag.TillgangligaJobb.Count; i++)
-   //            {
-   //                for(int j = 0; j < Lead.Jobbs.Count; i++)
-   //                {
-   //                    if (foretag.TillgangligaJobb[i].Jobb ==)
-   //                    {
-   //                        AcceptedForetag.Add(foretag);
-   //                    }
-   //                }
-   //            }
-   //         }
-   //         AcceptedForetag.OrderByDescending(o => o.Fakturerat % o.Kvar)
-   //             .ThenBy(o => o.Hitrate);
-   //
-   //         return AcceptedForetag;
-   //     }
+        //LeadJob
+        #region
+        public IEnumerable<LeadJob> GetAllLeadJobs()
+        {
+            return _context.LeadJobb.ToList();
+        }
+        #endregion
+
+        //    public IEnumerable<Foretag> MatchingLead(ValideradeLeads Lead)
+        //    {
+        //        List<Foretag> AcceptedForetag = new List<Foretag>(); 
+        //        foreach(var foretag in _context.Foretag)
+        //        {
+        //            for(int i = 0; i < foretag.TillgangligaJobb.Count; i++)
+        //            {
+        //                for(int j = 0; j < Lead.Jobbs.Count; i++)
+        //                {
+        //                    if (foretag.TillgangligaJobb[i].Jobb ==)
+        //                    {
+        //                        AcceptedForetag.Add(foretag);
+        //                    }
+        //                }
+        //            }
+        //         }
+        //         AcceptedForetag.OrderByDescending(o => o.Fakturerat % o.Kvar)
+        //             .ThenBy(o => o.Hitrate);
+        //
+        //         return AcceptedForetag;
+        //     }
 
         //Save and Dispose
         #region

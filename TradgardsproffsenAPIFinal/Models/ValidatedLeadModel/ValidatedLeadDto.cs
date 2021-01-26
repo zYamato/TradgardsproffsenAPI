@@ -15,6 +15,5 @@ namespace TradgardsproffsenAPI.Models
         public string Email { get; set; }
         public string URL { get; set; }
         public string Info { get; set; }
-        public List<LeadJob> Jobs { get; set; }
     }
 }

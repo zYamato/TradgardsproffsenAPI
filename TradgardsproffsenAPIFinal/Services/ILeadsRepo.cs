@@ -51,6 +51,11 @@ namespace TradgardsproffsenAPI.Services
         IEnumerable<Job> GetAllJobs();
         #endregion
 
+        //LeadJob
+        #region
+        public IEnumerable<LeadJob> GetAllLeadJobs();
+        #endregion
+
         bool Save();
 
 
