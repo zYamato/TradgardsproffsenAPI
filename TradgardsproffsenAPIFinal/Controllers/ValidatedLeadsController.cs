@@ -53,17 +53,5 @@ namespace TradgardsproffsenAPI.Controllers
             return CreatedAtRoute("GetValidatedLeadById",
                 new { Id = leadModel.Id }, leadToReturn);
         }
-
-        //[HttpPost]
-        //public ActionResult<UtskickadeLeadsReadDto> SkickaLead(UtskickadeLeadsCreateDto Utskickatlead, List<Foretag> foretags)
-        //{
-        //    var leadModel = _mapper.Map<ValideradeLeads>(Utskickatlead);
-        //    _leadsRepo.SkickaLead(leadModel, foretags);
-        //    _leadsRepo.Save();
-
-        //    var leadToReturn = _mapper.Map<UtskickadeLeadsReadDto>(leadModel);
-        //    return CreatedAtRoute("GetValidatedLeadById",
-        //            new { Id = leadModel.Id }, leadToReturn);
-        //}
     }
 }
