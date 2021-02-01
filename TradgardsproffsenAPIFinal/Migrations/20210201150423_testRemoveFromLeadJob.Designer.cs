@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TradgardsproffsenAPI.DbContexts;
 
 namespace TradgardsproffsenAPI.Migrations
 {
     [DbContext(typeof(TradgardsproffsenContext))]
-    partial class TradgardsproffsenContextModelSnapshot : ModelSnapshot
+    [Migration("20210201150423_testRemoveFromLeadJob")]
+    partial class testRemoveFromLeadJob
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -161,7 +163,7 @@ namespace TradgardsproffsenAPI.Migrations
                     b.Property<int?>("SentOutLeadId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("ValidatedLeadId")
+                    b.Property<int>("ValidatedLeadId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -331,7 +333,9 @@ namespace TradgardsproffsenAPI.Migrations
 
                     b.HasOne("TradgardsproffsenAPI.Entities.ValidatedLead", null)
                         .WithMany("Jobs")
-                        .HasForeignKey("ValidatedLeadId");
+                        .HasForeignKey("ValidatedLeadId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("TradgardsproffsenAPI.Entities.Company", b =>

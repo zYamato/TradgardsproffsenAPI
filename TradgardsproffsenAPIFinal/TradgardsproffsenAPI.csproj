@@ -16,10 +16,5 @@
     </PackageReference>
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Migrations\" />
-    <Folder Include="Models\LeadJobModel\" />
-  </ItemGroup>
-
 
 </Project>

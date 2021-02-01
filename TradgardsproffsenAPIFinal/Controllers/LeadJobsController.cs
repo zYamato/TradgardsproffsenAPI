@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TradgardsproffsenAPI.Entities;
+using TradgardsproffsenAPI.Models.LeadJobModel;
 using TradgardsproffsenAPI.Services;
 
 namespace TradgardsproffsenAPI.Controllers

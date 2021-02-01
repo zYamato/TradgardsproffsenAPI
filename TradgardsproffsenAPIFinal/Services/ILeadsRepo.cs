@@ -46,9 +46,11 @@ namespace TradgardsproffsenAPI.Services
         void SendLead(ValidatedLead Lead, List<Company> foretag);
         #endregion
 
-        //Jobb
+        //Job
         #region
         IEnumerable<Job> GetAllJobs();
+
+        Job GetJobById(int id);
         #endregion
 
         //LeadJob

@@ -169,6 +169,11 @@ namespace TradgardsproffsenAPI.Services
             return _context.Job.ToList()
                 .OrderBy(o => o.Name);
         }
+
+        public Job GetJobById(int id)
+        {
+            return _context.Job.Where(o => o.Id == id).FirstOrDefault();
+        }
         #endregion
 
         //LeadJob
