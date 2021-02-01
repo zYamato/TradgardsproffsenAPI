@@ -6,7 +6,7 @@ using TradgardsproffsenAPI.Services;
 
 namespace TradgardsproffsenAPI.Controllers
 {
-    [Route("api/LostLead")]
+    [Route("api/lostlead")]
     [ApiController]
     public class LostLeadController : ControllerBase
     {

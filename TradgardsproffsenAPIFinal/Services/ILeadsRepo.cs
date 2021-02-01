@@ -6,7 +6,7 @@ namespace TradgardsproffsenAPI.Services
 {
     public interface ILeadsRepo
     {
-        //Företag
+        //Company
         #region
         IEnumerable<Company> GetAllCompanies();
         Company GetCompanyFromName(string name);
@@ -27,20 +27,20 @@ namespace TradgardsproffsenAPI.Services
 
         #endregion
 
-        //Validerade Leads
+        //Validated Leads
         #region
         IEnumerable<ValidatedLead> GetAllValidatedLeads();
         ValidatedLead GetValidatedLeadsById(int id);
 
         #endregion
 
-        //FörloradeLeads
+        //Lost Leads
         #region
         IEnumerable<LostLead> GetAllLostLeads();
         void LoseLead(Lead Lead);
         #endregion
 
-        //Utskickade Leads
+        //Sent Out Leads
         #region
         IEnumerable<SentOutLead> GetAllSentOutLeads();
         void SendLead(ValidatedLead Lead, List<Company> foretag);

@@ -6,14 +6,14 @@ using TradgardsproffsenAPI.Services;
 
 namespace TradgardsproffsenAPI.Controllers
 {
-    [Route("api/Jobb")]
+    [Route("api/job")]
     [ApiController]
-    public class JobbController : ControllerBase
+    public class JobController : ControllerBase
     {
          private readonly ILeadsRepo _leadsRepo;
          private readonly IMapper _mapper;
 
-         public JobbController(ILeadsRepo leadsRepo, IMapper mapper)
+         public JobController(ILeadsRepo leadsRepo, IMapper mapper)
          {
              _leadsRepo = leadsRepo;
              _mapper = mapper;
