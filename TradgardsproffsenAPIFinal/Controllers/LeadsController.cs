@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
-using TradgardsproffsenAPI.Entities;
 using TradgardsproffsenAPI.Models;
 using TradgardsproffsenAPI.Services;
 

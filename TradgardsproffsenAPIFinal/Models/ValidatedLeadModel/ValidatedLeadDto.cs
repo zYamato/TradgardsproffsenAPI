@@ -1,8 +1,4 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using TradgardsproffsenAPI.Entities;
-using TradgardsproffsenAPI.Models;
-
+﻿
 namespace TradgardsproffsenAPI.Models
 {
     public class ValidatedLeadDto

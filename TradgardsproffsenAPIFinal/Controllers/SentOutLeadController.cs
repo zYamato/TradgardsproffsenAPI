@@ -2,9 +2,6 @@
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using TradgardsproffsenAPI.Entities;
 using TradgardsproffsenAPI.Models;
 using TradgardsproffsenAPI.Services;
 

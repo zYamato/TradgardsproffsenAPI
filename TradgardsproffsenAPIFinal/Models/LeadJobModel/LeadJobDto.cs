@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using TradgardsproffsenAPI.Entities;
-
+﻿using TradgardsproffsenAPI.Entities;
 namespace TradgardsproffsenAPI.Models.LeadJobModel
 {
     public class LeadJobDto

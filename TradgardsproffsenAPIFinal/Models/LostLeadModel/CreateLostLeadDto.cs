@@ -1,4 +1,4 @@
-﻿using TradgardsproffsenAPI.Entities;
+﻿
 
 namespace TradgardsproffsenAPI.Models
 {

@@ -4,7 +4,6 @@ using System.Linq;
 using TradgardsproffsenAPI.Entities;
 using TradgardsproffsenAPI.DbContexts;
 using Microsoft.Extensions.Configuration;
-using TradgardsproffsenAPI.Models;
 
 namespace TradgardsproffsenAPI.Services
 {

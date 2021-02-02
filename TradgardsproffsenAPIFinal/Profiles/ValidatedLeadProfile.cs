@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using TradgardsproffsenAPI.Entities;
 using TradgardsproffsenAPI.Models;
-using TradgardsproffsenAPI.Profiles.MapperHelper;
 
 namespace TradgardsproffsenAPI.Profiles
 {

@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using TradgardsproffsenAPI.Entities;
-using TradgardsproffsenAPI.Models;
 
 namespace TradgardsproffsenAPI.Services
 {
