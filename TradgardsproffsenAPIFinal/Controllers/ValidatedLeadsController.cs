@@ -30,7 +30,7 @@ namespace TradgardsproffsenAPI.Controllers
             return NotFound();
         }
 
-        [HttpGet("{id}:int", Name="GetValidatedLeadById")]
+        [HttpGet("{id:int}", Name="GetValidatedLeadById")]
         public ActionResult<ValidatedLeadDto> GetValidatedLeadById(int id)
         {
             var validatedLeadFromRepo = _leadsRepo.GetValidatedLeadsById(id);
