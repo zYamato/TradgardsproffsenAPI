@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TradgardsproffsenAPI.DbContexts;
 
 namespace TradgardsproffsenAPI.Migrations
 {
     [DbContext(typeof(TradgardsproffsenContext))]
-    partial class TradgardsproffsenContextModelSnapshot : ModelSnapshot
+    [Migration("20210203094544_addedStuffToLostLeadAgain")]
+    partial class addedStuffToLostLeadAgain
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -191,12 +193,6 @@ namespace TradgardsproffsenAPI.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("LeadId");
-
-                    b.HasIndex("SentOutLeadId");
-
-                    b.HasIndex("ValidatedLeadId");
-
                     b.ToTable("LostLead");
                 });
 
@@ -329,27 +325,6 @@ namespace TradgardsproffsenAPI.Migrations
                     b.HasOne("TradgardsproffsenAPI.Entities.ValidatedLead", null)
                         .WithMany("Jobs")
                         .HasForeignKey("ValidatedLeadId");
-                });
-
-            modelBuilder.Entity("TradgardsproffsenAPI.Entities.LostLead", b =>
-                {
-                    b.HasOne("TradgardsproffsenAPI.Entities.Lead", "Lead")
-                        .WithMany()
-                        .HasForeignKey("LeadId");
-
-                    b.HasOne("TradgardsproffsenAPI.Entities.SentOutLead", "SentOutLead")
-                        .WithMany()
-                        .HasForeignKey("SentOutLeadId");
-
-                    b.HasOne("TradgardsproffsenAPI.Entities.ValidatedLead", "ValidatedLead")
-                        .WithMany()
-                        .HasForeignKey("ValidatedLeadId");
-
-                    b.Navigation("Lead");
-
-                    b.Navigation("SentOutLead");
-
-                    b.Navigation("ValidatedLead");
                 });
 
             modelBuilder.Entity("TradgardsproffsenAPI.Entities.Company", b =>

@@ -9,6 +9,7 @@ namespace TradgardsproffsenAPI.Profiles
         public LostLeadProfile()
         {
             CreateMap<LostLead, LostLeadDto>();
+            CreateMap<CreateLostLeadDto, LostLead>();
         }
     }
 }

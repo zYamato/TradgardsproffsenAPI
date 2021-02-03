@@ -96,10 +96,7 @@ namespace TradgardsproffsenAPI.Services
             }
             LostLead forloradeLeads = new LostLead
             {
-                Name = lead.Name,
-                Address = lead.Address,
-                PostCode = lead.PostCode,
-                PhoneNumber = lead.PhoneNumber,
+                LeadId = lead.Id
             };
             _context.Lead.Remove(lead);
             _context.LostLead.Add(forloradeLeads);
@@ -112,20 +109,32 @@ namespace TradgardsproffsenAPI.Services
             }
             LostLead forloradLead = new LostLead
             {
-                Name = lead.Name,
-                Address = lead.Address,
-                PostCode = lead.PostCode,
-                PhoneNumber = lead.PhoneNumber,
-                Email = lead.Email,
-                District = lead.District
+                ValidatedLeadId = lead.Id
             };
             _context.ValidatedLead.Remove(lead);
             _context.LostLead.Add(forloradLead);
         }
+        public void LoseLead(SentOutLead lead)
+        {
+            if (lead == null)
+            {
+                throw new ArgumentNullException(nameof(lead));
+            }
+            LostLead forloradLead = new LostLead
+            {
+                SentOutLeadId = lead.Id
+            };
+            _context.SentOutLead.Remove(lead);
+            _context.LostLead.Add(forloradLead);
+        }
         public IEnumerable<LostLead> GetAllLostLeads()
         {
-            return _context.LostLead.ToList()
-                .OrderByDescending(o => o.Name);
+            return _context.LostLead.ToList();
+        }
+
+        public LostLead GetLostLeadById(int id)
+        {
+            return _context.LostLead.Where(o => o.Id == id).FirstOrDefault();
         }
         #endregion
         //ValidatedLeads
@@ -224,6 +233,11 @@ namespace TradgardsproffsenAPI.Services
             {
                 // dispose resources when needed
             }
+        }
+
+        public void LoseLead(LostLead Lead)
+        {
+            throw new NotImplementedException();
         }
         #endregion
     }

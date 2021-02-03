@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TradgardsproffsenAPI.DbContexts;
 
 namespace TradgardsproffsenAPI.Migrations
 {
     [DbContext(typeof(TradgardsproffsenContext))]
-    partial class TradgardsproffsenContextModelSnapshot : ModelSnapshot
+    [Migration("20210203094034_addedStuffToLostLead")]
+    partial class addedStuffToLostLead
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -180,22 +182,31 @@ namespace TradgardsproffsenAPI.Migrations
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
-                    b.Property<int?>("LeadId")
-                        .HasColumnType("int");
+                    b.Property<string>("Address")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("SentOutLeadId")
-                        .HasColumnType("int");
+                    b.Property<string>("District")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("ValidatedLeadId")
-                        .HasColumnType("int");
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PostCode")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("SentOut")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("Validated")
+                        .HasColumnType("bit");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("LeadId");
-
-                    b.HasIndex("SentOutLeadId");
-
-                    b.HasIndex("ValidatedLeadId");
 
                     b.ToTable("LostLead");
                 });
@@ -329,27 +340,6 @@ namespace TradgardsproffsenAPI.Migrations
                     b.HasOne("TradgardsproffsenAPI.Entities.ValidatedLead", null)
                         .WithMany("Jobs")
                         .HasForeignKey("ValidatedLeadId");
-                });
-
-            modelBuilder.Entity("TradgardsproffsenAPI.Entities.LostLead", b =>
-                {
-                    b.HasOne("TradgardsproffsenAPI.Entities.Lead", "Lead")
-                        .WithMany()
-                        .HasForeignKey("LeadId");
-
-                    b.HasOne("TradgardsproffsenAPI.Entities.SentOutLead", "SentOutLead")
-                        .WithMany()
-                        .HasForeignKey("SentOutLeadId");
-
-                    b.HasOne("TradgardsproffsenAPI.Entities.ValidatedLead", "ValidatedLead")
-                        .WithMany()
-                        .HasForeignKey("ValidatedLeadId");
-
-                    b.Navigation("Lead");
-
-                    b.Navigation("SentOutLead");
-
-                    b.Navigation("ValidatedLead");
                 });
 
             modelBuilder.Entity("TradgardsproffsenAPI.Entities.Company", b =>

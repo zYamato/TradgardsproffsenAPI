@@ -36,7 +36,8 @@ namespace TradgardsproffsenAPI.Services
         //Lost Leads
         #region
         IEnumerable<LostLead> GetAllLostLeads();
-        void LoseLead(Lead Lead);
+        LostLead GetLostLeadById(int id);
+        void LoseLead(LostLead Lead);
         #endregion
 
         //Sent Out Leads
