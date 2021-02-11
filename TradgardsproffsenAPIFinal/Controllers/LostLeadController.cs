@@ -39,7 +39,7 @@ namespace TradgardsproffsenAPI.Controllers
         }
 
         [HttpPost]
-        public ActionResult<LostLeadDto> LoseLead([FromBody]CreateLostLeadDto lead)
+        public ActionResult<LostLeadDto> LoseLead(CreateLostLeadDto lead)
         {
             var leadModel = _mapper.Map<LostLead>(lead);
             _leadsRepo.LoseLead(leadModel);

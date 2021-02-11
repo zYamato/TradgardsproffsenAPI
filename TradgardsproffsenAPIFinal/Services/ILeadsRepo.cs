@@ -22,7 +22,6 @@ namespace TradgardsproffsenAPI.Services
         Lead GetLeadByName(string name);
         Lead GetLeadById(int id);
         void DeleteLead(Lead lead);
-        void ValidateLead(ValidatedLead lead);
 
         #endregion
 
@@ -30,6 +29,7 @@ namespace TradgardsproffsenAPI.Services
         #region
         IEnumerable<ValidatedLead> GetAllValidatedLeads();
         ValidatedLead GetValidatedLeadsById(int id);
+        void ValidateLead(ValidatedLead lead);
 
         #endregion
 

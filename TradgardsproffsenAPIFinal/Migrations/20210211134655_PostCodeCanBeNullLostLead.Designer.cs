@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TradgardsproffsenAPI.DbContexts;
 
 namespace TradgardsproffsenAPI.Migrations
 {
     [DbContext(typeof(TradgardsproffsenContext))]
-    partial class TradgardsproffsenContextModelSnapshot : ModelSnapshot
+    [Migration("20210211134655_PostCodeCanBeNullLostLead")]
+    partial class PostCodeCanBeNullLostLead
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

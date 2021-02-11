@@ -88,44 +88,13 @@ namespace TradgardsproffsenAPI.Services
         #endregion
         //LostLeads
         #region
-        public void LoseLead(Lead lead)
+        public void LoseLead(LostLead lead)
         {
             if(lead == null)
             {
                 throw new ArgumentNullException(nameof(lead));
             }
-            LostLead forloradeLeads = new LostLead
-            {
-                LeadId = lead.Id
-            };
-            _context.Lead.Remove(lead);
-            _context.LostLead.Add(forloradeLeads);
-        }
-        public void LoseLead(ValidatedLead lead)
-        {
-            if(lead == null)
-            {
-                throw new ArgumentNullException(nameof(lead));
-            }
-            LostLead forloradLead = new LostLead
-            {
-                ValidatedLeadId = lead.Id
-            };
-            _context.ValidatedLead.Remove(lead);
-            _context.LostLead.Add(forloradLead);
-        }
-        public void LoseLead(SentOutLead lead)
-        {
-            if (lead == null)
-            {
-                throw new ArgumentNullException(nameof(lead));
-            }
-            LostLead forloradLead = new LostLead
-            {
-                SentOutLeadId = lead.Id
-            };
-            _context.SentOutLead.Remove(lead);
-            _context.LostLead.Add(forloradLead);
+            _context.LostLead.Add(lead);
         }
         public IEnumerable<LostLead> GetAllLostLeads()
         {
@@ -233,11 +202,6 @@ namespace TradgardsproffsenAPI.Services
             {
                 // dispose resources when needed
             }
-        }
-
-        public void LoseLead(LostLead Lead)
-        {
-            throw new NotImplementedException();
         }
         #endregion
     }
