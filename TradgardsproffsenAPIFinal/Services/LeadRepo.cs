@@ -116,6 +116,14 @@ namespace TradgardsproffsenAPI.Services
         {
             return _context.ValidatedLead.Where(o => o.Id == id).FirstOrDefault();
         }
+        public void DeleteValidatedLead(ValidatedLead lead)
+        {
+            if (lead == null)
+            {
+                throw new ArgumentNullException(nameof(lead));
+            }
+            _context.ValidatedLead.Remove(lead);
+        }
         public void SendLead(ValidatedLead lead, List<Company> Companies)
         {
             SentOutLead sentOutLead = new SentOutLead

@@ -30,6 +30,7 @@ namespace TradgardsproffsenAPI.Services
         IEnumerable<ValidatedLead> GetAllValidatedLeads();
         ValidatedLead GetValidatedLeadsById(int id);
         void ValidateLead(ValidatedLead lead);
+        void DeleteValidatedLead(ValidatedLead lead);
 
         #endregion
 

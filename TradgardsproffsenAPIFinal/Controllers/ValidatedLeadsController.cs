@@ -53,5 +53,19 @@ namespace TradgardsproffsenAPI.Controllers
             return CreatedAtRoute("GetValidatedLeadById",
                 new { Id = leadModel.Id }, leadToReturn);
         }
+
+        [HttpDelete("{id}")]
+        public ActionResult DeleteValidatedLead(int id)
+        {
+            var LeadFromRepo = _leadsRepo.GetValidatedLeadsById(id);
+            if (LeadFromRepo == null)
+            {
+                return NotFound();
+            }
+            _leadsRepo.DeleteValidatedLead(LeadFromRepo);
+            _leadsRepo.Save();
+
+            return NoContent();
+        }
     }
 }
