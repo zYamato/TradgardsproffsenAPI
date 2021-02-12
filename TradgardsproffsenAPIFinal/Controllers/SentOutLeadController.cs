@@ -7,7 +7,7 @@ using TradgardsproffsenAPI.Services;
 
 namespace TradgardsproffsenAPI.Controllers
 {
-    [Route("apu/sentoutlead")]
+    [Route("apu/sentoutleads")]
     [ApiController]
     public class SentOutLeadController : ControllerBase
     {
@@ -34,12 +34,12 @@ namespace TradgardsproffsenAPI.Controllers
         //[HttpPost]
         //public ActionResult<SentOutLeadDto> SendLead(CreateSentOutLeadDto sentOutLead)
         //{
-        //    var leadModel = _mapper.Map<ValidatedLead>(sentOutLead);
+        //    var leadModel = _mapper.Map<SentOutLead>(sentOutLead);
         //    _leadsRepo.SendLead(leadModel);
         //    _leadsRepo.Save();
         //
         //    var leadToReturn = _mapper.Map<SentOutLeadDto>(leadModel);
-        //    return CreatedAtRoute("GetValidatedLeadById",
+        //    return CreatedAtRoute("GetSentOutLeadById",
         //            new { Id = leadModel.Id }, leadToReturn);
         //}
     }
