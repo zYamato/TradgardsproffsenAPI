@@ -26,7 +26,6 @@ namespace TradgardsproffsenAPI.Controllers
             var lostLeadFromRepo = _leadsRepo.GetAllLostLeads();
             return Ok(_mapper.Map<IEnumerable<LostLeadDto>>(lostLeadFromRepo));
         }
-
         [HttpGet("{id:int}", Name = "GetLostLeadById")]
         public ActionResult<LostLeadDto> GetLostLeadById(int id)
         {
@@ -37,7 +36,6 @@ namespace TradgardsproffsenAPI.Controllers
             }
             return NotFound();
         }
-
         [HttpPost]
         public ActionResult<LostLeadDto> LoseLead(CreateLostLeadDto lead)
         {
@@ -50,6 +48,5 @@ namespace TradgardsproffsenAPI.Controllers
             return CreatedAtRoute("GetLostLeadById",
                 new { Id = leadModel.Id }, leadToReturn);
         }
-
     }
 }

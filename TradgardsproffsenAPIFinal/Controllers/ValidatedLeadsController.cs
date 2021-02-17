@@ -29,7 +29,6 @@ namespace TradgardsproffsenAPI.Controllers
             }
             return NotFound();
         }
-
         [HttpGet("{id:int}", Name="GetValidatedLeadById")]
         public ActionResult<ValidatedLeadDto> GetValidatedLeadById(int id)
         {
@@ -40,7 +39,6 @@ namespace TradgardsproffsenAPI.Controllers
             }
             return NotFound();
         }
-
         [HttpPost]
         public ActionResult<ValidatedLeadDto> ValideraLead([FromBody]CreateValidatedLeadDto lead)
         {
@@ -53,7 +51,6 @@ namespace TradgardsproffsenAPI.Controllers
             return CreatedAtRoute("GetValidatedLeadById",
                 new { Id = leadModel.Id }, leadToReturn);
         }
-
         [HttpDelete("{id}")]
         public ActionResult DeleteValidatedLead(int id)
         {

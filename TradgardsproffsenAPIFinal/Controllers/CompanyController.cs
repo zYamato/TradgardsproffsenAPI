@@ -26,7 +26,6 @@ namespace TradgardsproffsenAPI.Controllers
             var companiesFromRepo = _leadsRepo.GetAllCompanies();
             return Ok(_mapper.Map<IEnumerable<CompanyDto>>(companiesFromRepo));
         }
-
         [HttpGet("{id:int}", Name="GetCompanyById")]
         public ActionResult <CompanyDto> GetCompanyById(int id)
         {
@@ -37,7 +36,6 @@ namespace TradgardsproffsenAPI.Controllers
             }
             return NotFound(); 
         }
-
         [HttpGet("{name}")]
         public ActionResult <CompanyDto> GetCompanyByName(string name)
         {
@@ -48,7 +46,6 @@ namespace TradgardsproffsenAPI.Controllers
             }
             return NotFound();
         }
-
         [HttpPost]
         public ActionResult<CompanyDto> AddCompany(CreateCompanyDto company)
         {
@@ -60,7 +57,6 @@ namespace TradgardsproffsenAPI.Controllers
             return CreatedAtRoute("GetCompanyById",
                 new { Id = companyModel.Id }, companyToReturn);
         }
-
         [HttpPut("{id}")]
         public ActionResult UpdateCompany(int id, UpdateCompanyDto company)
         {
@@ -76,7 +72,6 @@ namespace TradgardsproffsenAPI.Controllers
 
             return NoContent();
         }
-
         [HttpDelete("{id}")]
         public ActionResult DeleteCompany(int id)
         {
@@ -90,7 +85,6 @@ namespace TradgardsproffsenAPI.Controllers
 
             return NoContent();
         }
-
     //   [Route("Match")]
     //   [HttpGet]
     //   public ActionResult<IEnumerable<ForetagReadDto>> MatchingLead(ValideradeLeads Leads)

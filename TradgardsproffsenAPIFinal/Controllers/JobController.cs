@@ -18,14 +18,12 @@ namespace TradgardsproffsenAPI.Controllers
              _leadsRepo = leadsRepo;
              _mapper = mapper;
          }
-
         [HttpGet]
          public ActionResult<IEnumerable<Jobs>> GetAllJobs()
          {
              var jobbFromRepo = _leadsRepo.GetAllJobs();
              return Ok(_mapper.Map<IEnumerable<Jobs>>(jobbFromRepo));
          }
-
         [HttpGet("{id:int}", Name="GetJobById")]
         public ActionResult<Jobs> GetJobById(int id)
         {

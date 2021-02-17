@@ -30,7 +30,6 @@ namespace TradgardsproffsenAPI.Controllers
             }
             return NotFound();
         }
-
         //[HttpPost]
         //public ActionResult<SentOutLeadDto> SendLead(CreateSentOutLeadDto sentOutLead)
         //{

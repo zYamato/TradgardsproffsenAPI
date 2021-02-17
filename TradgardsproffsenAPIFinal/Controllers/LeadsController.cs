@@ -26,7 +26,6 @@ namespace TradgardsproffsenAPI.Controllers
 
             return Ok(_mapper.Map<IEnumerable<LeadDto>>(leadsFromRepo));
         }
-
         [HttpGet("{id:int}", Name="GetLeadById")]
         public ActionResult <LeadDto> GetLeadById(int id)
         {
@@ -36,9 +35,7 @@ namespace TradgardsproffsenAPI.Controllers
                 return Ok(_mapper.Map<LeadDto>(leadFromRepo));
             }
             return NotFound();
-        }
-
-        
+        }  
         [HttpGet("{name}")]
         public ActionResult<LeadDto> GetLeadByName(string name)
         {
@@ -49,7 +46,6 @@ namespace TradgardsproffsenAPI.Controllers
             }
             return NotFound();
         }
-
         [HttpDelete("{id}")]
         public ActionResult DeleteLead(int id)
         {
