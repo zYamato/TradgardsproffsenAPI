@@ -26,7 +26,5 @@ namespace TradgardsproffsenAPI.Controllers
             var leadJobsFromRepo = _leadsRepo.GetAllLeadJobs();
             return Ok(_mapper.Map<IEnumerable<LeadJobDto>>(leadJobsFromRepo));
         }
-
-
     }
 }
