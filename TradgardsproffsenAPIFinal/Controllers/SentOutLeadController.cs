@@ -8,7 +8,7 @@ using TradgardsproffsenAPI.Services;
 
 namespace TradgardsproffsenAPI.Controllers
 {
-    [Route("apu/sentoutleads")]
+    [Route("api/sentoutleads")]
     [ApiController]
     public class SentOutLeadController : ControllerBase
     {

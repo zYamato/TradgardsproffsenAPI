@@ -124,23 +124,13 @@ namespace TradgardsproffsenAPI.Services
             }
             _context.ValidatedLead.Remove(lead);
         }
-        public void SendLead(ValidatedLead lead, List<Company> Companies)
+        public void SendLead(SentOutLead lead)
         {
-            SentOutLead sentOutLead = new SentOutLead
+            if(lead == null)
             {
-                Name = lead.Name,
-                Email = lead.Email,
-                PhoneNumber = lead.PhoneNumber,
-                Address = lead.Address,
-                District = lead.District,
-                PostCode = lead.PostCode,
-                Jobs = lead.Jobs,
-                Info = lead.Info,
-                URL = lead.URL,
-                CompaniesSentTo = Companies
-            };
-            _context.ValidatedLead.Remove(lead);
-            _context.SentOutLead.Add(sentOutLead);
+                throw new ArgumentNullException(nameof(lead));
+            }
+            _context.SentOutLead.Add(lead);
         }
 
         #endregion
@@ -175,9 +165,21 @@ namespace TradgardsproffsenAPI.Services
         {
             return _context.LeadJob.ToList();
         }
+        public void DeleteLeadJobs(int id)
+        {
+            IEnumerable<LeadJob> leadJobs = GetAllLeadJobs();
+
+            foreach (var leadJob in leadJobs)
+            {
+                if (leadJob.ValidatedLeadId == id)
+                {
+                    _context.LeadJob.Remove(leadJob);
+                }
+            }
+        }
         #endregion
 
-            public IEnumerable<Company> MatchingLead(ValidatedLead Lead)
+        public IEnumerable<Company> MatchingLead(ValidatedLead Lead)
             {
                 List<Company> AcceptedForetag = new List<Company>(); 
                 foreach(var foretag in _context.Company)
@@ -217,19 +219,6 @@ namespace TradgardsproffsenAPI.Services
             if (disposing)
             {
                 // dispose resources when needed
-            }
-        }
-
-        public void DeleteLeadJobs(int id)
-        {
-            IEnumerable<LeadJob> leadJobs = GetAllLeadJobs();
-
-            foreach(var leadJob in leadJobs)
-            {
-                if(leadJob.ValidatedLeadId == id)
-                {
-                    _context.LeadJob.Remove(leadJob);
-                }
             }
         }
         #endregion
