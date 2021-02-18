@@ -128,7 +128,15 @@ namespace TradgardsproffsenAPI.Services
         {
             SentOutLead sentOutLead = new SentOutLead
             {
-                //Jobs = lead.Jobs,
+                Name = lead.Name,
+                Email = lead.Email,
+                PhoneNumber = lead.PhoneNumber,
+                Address = lead.Address,
+                District = lead.District,
+                PostCode = lead.PostCode,
+                Jobs = lead.Jobs,
+                Info = lead.Info,
+                URL = lead.URL,
                 CompaniesSentTo = Companies
             };
             _context.ValidatedLead.Remove(lead);
@@ -165,31 +173,31 @@ namespace TradgardsproffsenAPI.Services
         #region
         public IEnumerable<LeadJob> GetAllLeadJobs()
         {
-            return _context.LeadJobb.ToList();
+            return _context.LeadJob.ToList();
         }
         #endregion
 
-        //    public IEnumerable<Foretag> MatchingLead(ValideradeLeads Lead)
-        //    {
-        //        List<Foretag> AcceptedForetag = new List<Foretag>(); 
-        //        foreach(var foretag in _context.Foretag)
-        //        {
-        //            for(int i = 0; i < foretag.TillgangligaJobb.Count; i++)
-        //            {
-        //                for(int j = 0; j < Lead.Jobbs.Count; i++)
-        //                {
-        //                    if (foretag.TillgangligaJobb[i].Jobb ==)
-        //                    {
-        //                        AcceptedForetag.Add(foretag);
-        //                    }
-        //                }
-        //            }
-        //         }
-        //         AcceptedForetag.OrderByDescending(o => o.Fakturerat % o.Kvar)
-        //             .ThenBy(o => o.Hitrate);
-        //
-        //         return AcceptedForetag;
-        //     }
+            public IEnumerable<Company> MatchingLead(ValidatedLead Lead)
+            {
+                List<Company> AcceptedForetag = new List<Company>(); 
+                foreach(var foretag in _context.Company)
+                {
+                    for(int i = 0; i < foretag.AvailableJobs.Count; i++)
+                    {
+                        for(int j = 0; j < Lead.Jobs.Count; i++)
+                        {
+                            if (foretag.AvailableJobs[i].Job == Lead.Jobs[j].Job)
+                            {
+                                AcceptedForetag.Add(foretag);
+                            }
+                        }
+                    }
+                 }
+                 AcceptedForetag.OrderByDescending(o => o.Accomplished % o.Left)
+                     .ThenBy(o => o.HitRate);
+        
+                 return AcceptedForetag;
+             }
 
         //Save and Dispose
         #region
@@ -209,6 +217,19 @@ namespace TradgardsproffsenAPI.Services
             if (disposing)
             {
                 // dispose resources when needed
+            }
+        }
+
+        public void DeleteLeadJobs(int id)
+        {
+            IEnumerable<LeadJob> leadJobs = GetAllLeadJobs();
+
+            foreach(var leadJob in leadJobs)
+            {
+                if(leadJob.ValidatedLeadId == id)
+                {
+                    _context.LeadJob.Remove(leadJob);
+                }
             }
         }
         #endregion

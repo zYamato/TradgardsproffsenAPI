@@ -60,8 +60,6 @@ namespace TradgardsproffsenAPI.Services
         #endregion
 
         bool Save();
-
-
-
+        void DeleteLeadJobs(int id);
     }
 }

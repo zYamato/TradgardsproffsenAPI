@@ -3,9 +3,8 @@ namespace TradgardsproffsenAPI.Models.LeadJobModel
 {
     public class LeadJobDto
     {
-
-        public ValidatedLead Lead ;
-
-        public Job Job;
+        public int? ValidatedLeadId { get; set; }
+        public int? SentOutLeadId { get; set; }
+        public int JobId { get; set; }
     }
 }

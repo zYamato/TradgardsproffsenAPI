@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
+using TradgardsproffsenAPI.Entities;
 using TradgardsproffsenAPI.Models;
 using TradgardsproffsenAPI.Services;
 
@@ -31,16 +32,16 @@ namespace TradgardsproffsenAPI.Controllers
             return NotFound();
         }
 
-        //[HttpPost]
-        //public ActionResult<SentOutLeadDto> SendLead(CreateSentOutLeadDto sentOutLead)
-        //{
-        //    var leadModel = _mapper.Map<SentOutLead>(sentOutLead);
-        //    _leadsRepo.SendLead(leadModel);
-        //    _leadsRepo.Save();
-        //
-        //    var leadToReturn = _mapper.Map<SentOutLeadDto>(leadModel);
-        //    return CreatedAtRoute("GetSentOutLeadById",
-        //            new { Id = leadModel.Id }, leadToReturn);
-        //}
+       // [HttpPost]
+       // public ActionResult<SentOutLeadDto> SendLead(CreateSentOutLeadDto sentOutLead)
+       // {
+       //     var leadModel = _mapper.Map<ValidatedLead>(sentOutLead);
+       //     _leadsRepo.SendLead(leadModel);
+       //     _leadsRepo.Save();
+       // 
+       //     var leadToReturn = _mapper.Map<SentOutLeadDto>(leadModel);
+       //     return CreatedAtRoute("GetSentOutLeadById",
+       //             new { Id = leadModel.Id }, leadToReturn);
+       // }
     }
 }

@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using TradgardsproffsenAPI.Entities;
+using TradgardsproffsenAPI.Models.LeadJobModel;
 using TradgardsproffsenAPI.Services;
 
 namespace TradgardsproffsenAPI.Controllers
@@ -20,10 +21,10 @@ namespace TradgardsproffsenAPI.Controllers
         }
 
         [HttpGet]
-        public ActionResult<IEnumerable<LeadJob>> GetAllLeadJobs()
+        public ActionResult<IEnumerable<LeadJobDto>> GetAllLeadJobs()
         {
             var leadJobsFromRepo = _leadsRepo.GetAllLeadJobs();
-            return Ok(_mapper.Map<IEnumerable<LeadJob>>(leadJobsFromRepo));
+            return Ok(_mapper.Map<IEnumerable<LeadJobDto>>(leadJobsFromRepo));
         }
 
 

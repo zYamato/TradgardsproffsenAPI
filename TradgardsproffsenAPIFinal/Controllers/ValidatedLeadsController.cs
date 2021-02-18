@@ -57,12 +57,13 @@ namespace TradgardsproffsenAPI.Controllers
         [HttpDelete("{id}")]
         public ActionResult DeleteValidatedLead(int id)
         {
-            var LeadFromRepo = _leadsRepo.GetValidatedLeadsById(id);
-            if (LeadFromRepo == null)
+            var leadFromRepo = _leadsRepo.GetValidatedLeadsById(id);
+            if (leadFromRepo == null)
             {
                 return NotFound();
             }
-            _leadsRepo.DeleteValidatedLead(LeadFromRepo);
+            _leadsRepo.DeleteLeadJobs(id);
+            _leadsRepo.DeleteValidatedLead(leadFromRepo);
             _leadsRepo.Save();
 
             return NoContent();
