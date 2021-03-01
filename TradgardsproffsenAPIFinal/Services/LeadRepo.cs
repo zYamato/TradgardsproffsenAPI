@@ -143,6 +143,11 @@ namespace TradgardsproffsenAPI.Services
                 .OrderByDescending(o => o.Id);
         }
 
+        public SentOutLead GetSentOutLeadById(int id)
+        {
+            return _context.SentOutLead.Where(o => o.Id == id).FirstOrDefault();
+        }
+
 
         #endregion
         //Jobs

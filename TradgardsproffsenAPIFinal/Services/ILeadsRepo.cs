@@ -44,6 +44,7 @@ namespace TradgardsproffsenAPI.Services
         //Sent Out Leads
         #region
         IEnumerable<SentOutLead> GetAllSentOutLeads();
+        SentOutLead GetSentOutLeadById(int id);
         void SendLead(SentOutLead Lead);
         #endregion
 
