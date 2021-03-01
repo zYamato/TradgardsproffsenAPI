@@ -32,6 +32,17 @@ namespace TradgardsproffsenAPI.Controllers
             return NotFound();
         }
 
+        [HttpPost]
+        public ActionResult<SentOutLeadDto> SendLead(CreateSentOutLeadDto sentOutLead)
+        {
+            var leadModel = _mapper.Map<SentOutLead>(sentOutLead);
+            _leadsRepo.SendLead(leadModel);
+            _leadsRepo.Save();
+        
+            var leadToReturn = _mapper.Map<SentOutLeadDto>(leadModel);
+            return CreatedAtRoute("GetSentOutLeadById",
+                    new { Id = leadModel.Id }, leadToReturn);
+        }
         [HttpGet("{id:int}", Name = "GetSentOutLeadById")]
         public ActionResult<ValidatedLeadDto> GetSentOutLeadById(int id)
         {
