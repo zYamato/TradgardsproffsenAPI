@@ -4,6 +4,10 @@ using System.Linq;
 using TradgardsproffsenAPI.Entities;
 using TradgardsproffsenAPI.DbContexts;
 using Microsoft.Extensions.Configuration;
+using System.IdentityModel.Tokens.Jwt;
+using System.Text;
+using Microsoft.IdentityModel.Tokens;
+using System.Security.Claims;
 
 namespace TradgardsproffsenAPI.Services
 {
@@ -184,6 +188,46 @@ namespace TradgardsproffsenAPI.Services
         }
         #endregion
 
+        //User
+        #region
+        public void AddUser(User user)
+        {
+            if(user == null)
+            {
+                throw new ArgumentNullException(nameof(user));
+            }
+            _context.Users.Add(user);
+        }
+        public void DeleteUser(User user)
+        {
+            if(user == null) throw new ArgumentNullException(nameof(user));
+
+            _context.Users.Remove(user);
+        }
+        public User GetUser(string Username)
+        {
+            if (Username == null) throw new ArgumentNullException(nameof(Username));
+
+            return _context.Users.FirstOrDefault(a => a.Username == Username);
+        }
+        public User GetUser(int userId)
+        {
+            return _context.Users.FirstOrDefault(a => a.Id == userId);
+        }
+        public IEnumerable<User> GetUsers()
+        {
+            return _context.Users.ToList<User>();
+        }
+        public bool UserExists(int userId)
+        {
+            if(userId <= 0)
+            {
+                throw new ArgumentNullException(nameof(userId));
+            }
+            return _context.Users.Any(a => a.Id == userId);
+        }
+        #endregion
+
         public IEnumerable<Company> MatchingLead(ValidatedLead Lead)
             {
                 List<Company> AcceptedForetag = new List<Company>(); 
@@ -208,6 +252,29 @@ namespace TradgardsproffsenAPI.Services
 
         //Save and Dispose
         #region
+
+        public JwtSecurityToken AuthenticateUser(string name, string password)
+        {
+            var user = _context.Users.Where(a => a.Username == name && a.Password == password).FirstOrDefault();
+            if (user == null) return null;
+
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var tokenKey = Encoding.ASCII.GetBytes(Configuration["JWT:Secret"]);
+
+            var tokenDescriptor = new SecurityTokenDescriptor
+            {
+                Subject = new ClaimsIdentity(new Claim[]
+                {
+                    new Claim(ClaimTypes.Name, name)
+                }),
+                Expires = DateTime.Now.AddDays(1),
+                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(tokenKey), SecurityAlgorithms.HmacSha256Signature)
+            };
+            var token = tokenHandler.CreateJwtSecurityToken(tokenDescriptor);
+
+            return token;
+        }
+
         public bool Save()
         {
             return (_context.SaveChanges() >= 0);

@@ -19,5 +19,6 @@ namespace TradgardsproffsenAPI.DbContexts
         public DbSet<ValidatedLead> ValidatedLead { get; set; }
         public DbSet<LostLead> LostLead { get; set; }
         public DbSet<SentOutLead> SentOutLead { get; set; }
+        public DbSet<User> Users { get; set; }
     }
 }

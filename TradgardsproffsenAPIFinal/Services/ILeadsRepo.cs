@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
 using TradgardsproffsenAPI.Entities;
 
 namespace TradgardsproffsenAPI.Services
@@ -59,6 +60,18 @@ namespace TradgardsproffsenAPI.Services
         #region
         public IEnumerable<LeadJob> GetAllLeadJobs();
         #endregion
+
+        //User
+        #region
+        IEnumerable<User> GetUsers();
+        User GetUser(string Username);
+        User GetUser(int userId);
+        void AddUser(User user);
+        #endregion
+
+
+
+        JwtSecurityToken AuthenticateUser(string username, string password);
 
         bool Save();
         void DeleteLeadJobs(int id);
