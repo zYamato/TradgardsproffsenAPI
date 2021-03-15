@@ -8,6 +8,9 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Text;
 using Microsoft.IdentityModel.Tokens;
 using System.Security.Claims;
+using SendGrid;
+using SendGrid.Helpers.Mail;
+using System.Threading.Tasks;
 
 namespace TradgardsproffsenAPI.Services
 {
@@ -128,17 +131,8 @@ namespace TradgardsproffsenAPI.Services
             }
             _context.ValidatedLead.Remove(lead);
         }
-        public void SendLead(SentOutLead lead)
-        {
-            if(lead == null)
-            {
-                throw new ArgumentNullException(nameof(lead));
-            }
-            _context.SentOutLead.Add(lead);
-        }
-
         #endregion
-        //SentOut Lead
+        //SentOutLead
         #region
 
         public IEnumerable<SentOutLead> GetAllSentOutLeads()
@@ -150,6 +144,14 @@ namespace TradgardsproffsenAPI.Services
         public SentOutLead GetSentOutLeadById(int id)
         {
             return _context.SentOutLead.Where(o => o.Id == id).FirstOrDefault();
+        }
+        public void SendLead(SentOutLead lead)
+        {
+            if (lead == null)
+            {
+                throw new ArgumentNullException(nameof(lead));
+            }
+            _context.SentOutLead.Add(lead);
         }
 
 
@@ -167,7 +169,6 @@ namespace TradgardsproffsenAPI.Services
             return _context.Job.Where(o => o.Id == id).FirstOrDefault();
         }
         #endregion
-
         //LeadJob
         #region
         public IEnumerable<LeadJob> GetAllLeadJobs()
@@ -187,7 +188,6 @@ namespace TradgardsproffsenAPI.Services
             }
         }
         #endregion
-
         //User
         #region
         public void AddUser(User user)
@@ -230,24 +230,24 @@ namespace TradgardsproffsenAPI.Services
 
         public IEnumerable<Company> MatchingLead(ValidatedLead Lead)
             {
-                List<Company> AcceptedForetag = new List<Company>(); 
-                foreach(var foretag in _context.Company)
+                List<Company> AcceptedCompany = new List<Company>(); 
+                foreach(var company in _context.Company)
                 {
-                    for(int i = 0; i < foretag.AvailableJobs.Count; i++)
+                    for(int i = 0; i < company.AvailableJobs.Count; i++)
                     {
                         for(int j = 0; j < Lead.Jobs.Count; i++)
                         {
-                            if (foretag.AvailableJobs[i].Job == Lead.Jobs[j].Job)
+                            if (company.AvailableJobs[i].Job == Lead.Jobs[j].Job)
                             {
-                                AcceptedForetag.Add(foretag);
+                                AcceptedCompany.Add(company);
                             }
                         }
                     }
                  }
-                 AcceptedForetag.OrderByDescending(o => o.Accomplished % o.Left)
+                 AcceptedCompany.OrderByDescending(o => o.Accomplished / o.Left)
                      .ThenBy(o => o.HitRate);
         
-                 return AcceptedForetag;
+                 return AcceptedCompany;
              }
 
         //Save and Dispose
