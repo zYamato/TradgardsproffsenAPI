@@ -54,5 +54,19 @@ namespace TradgardsproffsenAPI.Controllers
             }
             return NotFound();
         }
+        [HttpDelete("{id}")]
+        public ActionResult DeleteSentOutLead(int id)
+        {
+            var leadFromRepo = _leadsRepo.GetSentOutLeadById(id);
+            if (leadFromRepo == null)
+            {
+                return NotFound();
+            }
+            _leadsRepo.DeleteSentOutLeadJobs(id);
+            _leadsRepo.DeleteSentOutLead(leadFromRepo);
+            _leadsRepo.Save();
+
+            return NoContent();
+        }
     }
 }

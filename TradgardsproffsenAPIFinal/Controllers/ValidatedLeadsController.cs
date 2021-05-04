@@ -59,7 +59,7 @@ namespace TradgardsproffsenAPI.Controllers
             {
                 return NotFound();
             }
-            _leadsRepo.DeleteLeadJobs(id);
+            _leadsRepo.DeleteValidatedLeadJobs(id);
             _leadsRepo.DeleteValidatedLead(leadFromRepo);
             _leadsRepo.Save();
 

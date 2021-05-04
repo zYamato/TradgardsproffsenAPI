@@ -154,6 +154,15 @@ namespace TradgardsproffsenAPI.Services
             _context.SentOutLead.Add(lead);
         }
 
+        public void DeleteSentOutLead(SentOutLead lead)
+        {
+            if (lead == null)
+            {
+                throw new ArgumentNullException(nameof(lead));
+            }
+            _context.SentOutLead.Remove(lead);
+        }
+
 
         #endregion
         //Jobs
@@ -175,13 +184,25 @@ namespace TradgardsproffsenAPI.Services
         {
             return _context.LeadJob.ToList();
         }
-        public void DeleteLeadJobs(int id)
+        public void DeleteValidatedLeadJobs(int id)
         {
             IEnumerable<LeadJob> leadJobs = GetAllLeadJobs();
 
             foreach (var leadJob in leadJobs)
             {
                 if (leadJob.ValidatedLeadId == id)
+                {
+                    _context.LeadJob.Remove(leadJob);
+                }
+            }
+        }
+        public void DeleteSentOutLeadJobs(int id)
+        {
+            IEnumerable<LeadJob> leadJobs = GetAllLeadJobs();
+
+            foreach (var leadJob in leadJobs)
+            {
+                if (leadJob.SentOutLeadId == id)
                 {
                     _context.LeadJob.Remove(leadJob);
                 }
@@ -312,6 +333,11 @@ namespace TradgardsproffsenAPI.Services
             {
                 // dispose resources when needed
             }
+        }
+
+        public void DeleteLeadJobs(int id)
+        {
+            throw new NotImplementedException();
         }
         #endregion
     }

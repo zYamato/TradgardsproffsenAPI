@@ -47,6 +47,7 @@ namespace TradgardsproffsenAPI.Services
         IEnumerable<SentOutLead> GetAllSentOutLeads();
         SentOutLead GetSentOutLeadById(int id);
         void SendLead(SentOutLead Lead);
+        void DeleteSentOutLead(SentOutLead lead);
         #endregion
 
         //Job
@@ -59,6 +60,8 @@ namespace TradgardsproffsenAPI.Services
         //LeadJob
         #region
         public IEnumerable<LeadJob> GetAllLeadJobs();
+        void DeleteValidatedLeadJobs(int id);
+        void DeleteSentOutLeadJobs(int id);
         #endregion
 
         //User
@@ -78,8 +81,7 @@ namespace TradgardsproffsenAPI.Services
 
 
         JwtSecurityToken AuthenticateUser(string username, string password);
-
         bool Save();
-        void DeleteLeadJobs(int id);
+        
     }
 }
