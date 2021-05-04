@@ -69,6 +69,12 @@ namespace TradgardsproffsenAPI.Services
         void AddUser(User user);
         #endregion
 
+        //CompletedLeads
+        #region
+        IEnumerable<CompletedLead> GetAllCompltedLeads();
+        CompletedLead GetCompletedLeadById(int id);
+        void CompleteLead(CompletedLead leadModel);
+        #endregion
 
 
         JwtSecurityToken AuthenticateUser(string username, string password);

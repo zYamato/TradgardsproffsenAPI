@@ -227,6 +227,26 @@ namespace TradgardsproffsenAPI.Services
             return _context.Users.Any(a => a.Id == userId);
         }
         #endregion
+        //CompletedLeads
+        #region
+        public void CompleteLead(CompletedLead lead)
+        {
+            if(lead == null)
+            {
+                throw new ArgumentNullException(nameof(lead));
+            }
+            _context.CompletedLead.Add(lead);
+        }
+        public IEnumerable<CompletedLead> GetAllCompltedLeads()
+        {
+            return _context.CompletedLead.ToList();
+        }
+
+        public CompletedLead GetCompletedLeadById(int id)
+        {
+            return _context.CompletedLead.Where(o => o.Id == id).FirstOrDefault();
+        }
+        #endregion
 
         public IEnumerable<Company> MatchingLead(ValidatedLead Lead)
             {
