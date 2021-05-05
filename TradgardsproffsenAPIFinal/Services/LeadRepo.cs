@@ -209,6 +209,25 @@ namespace TradgardsproffsenAPI.Services
             }
         }
         #endregion
+        //CompanyJob
+        #region
+        public IEnumerable<CompanyJob> GetAllCompanyJobs()
+        {
+            return _context.CompanyJob.ToList();
+        }
+        public void DeleteCompanyJobs(int id)
+        {
+            IEnumerable<CompanyJob> compJobs = GetAllCompanyJobs();
+
+            foreach (var compJob in compJobs)
+            {
+                if (compJob.CompanyId == id)
+                {
+                    _context.CompanyJob.Remove(compJob);
+                }
+            }
+        }
+        #endregion
         //User
         #region
         public void AddUser(User user)

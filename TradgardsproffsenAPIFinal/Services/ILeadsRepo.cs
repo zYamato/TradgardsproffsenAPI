@@ -64,6 +64,12 @@ namespace TradgardsproffsenAPI.Services
         void DeleteSentOutLeadJobs(int id);
         #endregion
 
+        //CompanyJob
+        #region
+        public IEnumerable<CompanyJob> GetAllCompanyJobs();
+        void DeleteCompanyJobs(int id);
+        #endregion
+
         //User
         #region
         IEnumerable<User> GetUsers();

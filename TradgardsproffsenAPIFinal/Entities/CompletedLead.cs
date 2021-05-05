@@ -29,5 +29,6 @@ namespace TradgardsproffsenAPI.Entities
         public string Info { get; set; }
         public List<LeadJob> Jobs { get; set; }
         public List<Company> CompaniesSentTo { get; set; }
+        public Company CompanyCompleted { get; set; }
     }
 }
