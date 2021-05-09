@@ -45,12 +45,12 @@ namespace TradgardsproffsenAPI.Controllers
         }
 
         [HttpGet("{id:int}", Name = "GetSentOutLeadById")]
-        public ActionResult<ValidatedLeadDto> GetSentOutLeadById(int id)
+        public ActionResult<SentOutLeadDto> GetSentOutLeadById(int id)
         {
-            var validatedLeadFromRepo = _leadsRepo.GetSentOutLeadById(id);
-            if (validatedLeadFromRepo != null)
+            var sentOutLeadFromRepo = _leadsRepo.GetSentOutLeadById(id);
+            if (sentOutLeadFromRepo != null)
             {
-                return Ok(_mapper.Map<ValidatedLeadDto>(validatedLeadFromRepo));
+                return Ok(_mapper.Map<SentOutLeadDto>(sentOutLeadFromRepo));
             }
             return NotFound();
         }

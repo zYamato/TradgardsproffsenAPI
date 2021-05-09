@@ -26,6 +26,6 @@ namespace TradgardsproffsenAPI.Entities
         public string Description { get; set; }
         public string Info { get; set; }
         public List<LeadJob> Jobs { get; set; }
-        public List<Company> CompaniesSentTo { get; set; }
+        public List<CompanySentOutLead> CompaniesSentTo { get; set; }
     }
 }
